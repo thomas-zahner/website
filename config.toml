@@ -19,3 +19,9 @@ highlight_code = true
 
 [extra]
 logo_text = "thomaszahner.ch"
+
+menu_items = [
+    {name = "Blog", url = "$BASE_URL"},
+    {name = "Tags", url = "$BASE_URL/tags"},
+    {name = "About", url = "$BASE_URL/about"},
+]
