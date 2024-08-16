@@ -24,4 +24,5 @@ menu_items = [
     {name = "Blog", url = "$BASE_URL"},
     {name = "Tags", url = "$BASE_URL/tags"},
     {name = "About", url = "$BASE_URL/about"},
+    {name = "Projects", url = "$BASE_URL/projects"},
 ]
