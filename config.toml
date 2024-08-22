@@ -1,5 +1,5 @@
 base_url = "https://thomaszahner.ch"
-theme = "terminimal"
+theme = "apollo"
 title = "Thomas Zahner"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -9,7 +9,7 @@ compile_sass = true
 build_search_index = true
 
 taxonomies = [
-  {name = "tags"},
+  { name = "tags" },
 ]
 
 [markdown]
@@ -18,11 +18,9 @@ taxonomies = [
 highlight_code = true
 
 [extra]
-logo_text = "thomaszahner.ch"
-
-menu_items = [
-    {name = "Blog", url = "$BASE_URL"},
-    {name = "Tags", url = "$BASE_URL/tags"},
-    {name = "Projects", url = "$BASE_URL/projects"},
-    {name = "About", url = "$BASE_URL/about"},
+menu = [
+    { name = "Projects", url = "/projects" },
+    { name = "Posts", url = "/posts" },
+    { name = "Tags", url = "/tags" },
+    { name = "About", url = "/about" },
 ]
