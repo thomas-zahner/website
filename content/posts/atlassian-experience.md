@@ -63,7 +63,7 @@ Additionally, handing over all your data to an external entity might come with s
 
 Nevertheless, Atlassian tried to push their cloud products quite agressively.
 In a clever move, they announced the end-of-life of their "server" products but kept selling the "data centre" solution.
-From a technical standpoint those two palatforms are identical. The only difference is the ability to run multiple nodes redundantly.
+From a technical standpoint those two platforms are identical. The only difference is the ability to run multiple nodes redundantly.
 From a customer's perspective the main difference is the pricing.
 
 While you could get the Confluence server product for 10 users with a one-time payment of 10$,
@@ -118,19 +118,22 @@ Or at least you could if your screen was big enough.
 
 ![Screenshot of admin settings from a mobile phone in landscape mode, showing a dysfunctional and unreadable table where the first column is so small that the text spans across the whole height of the screen](/mobile-responsiveness.png)
 
-Confluence is also notorious for its poor search functionality.
+Atlassian products also notorious for its poor search functionality.
 In the past (when I was still using Confluence) I would search for a page using a single word.
 The results wouldn't show the page containing that exact word, but other unrelated content.
 And searching for substrings of words on a page will *never* yield the page.
 This is reported and known since 2008 but marked as "gathering interest" by Atlassian as of 2024.[^4]
 
 After a customer's complaint about the poor quality of search results,
-Atlassian went on to say that they could use thrid-party apps that might perform better
+Atlassian went on to say that they could use third-party apps that might perform better
 or use analytics add-ons.[^5]
+
+They also have some weired "reserved words" you won't be able to search for to *to keep the search index size and search performance optimal*
+which leads to unexpected behaviour.[^6]
 
 But it gets even better.
 While they don't seem to bother to make search actually good and useful
-they introduced a powerful new feature: AI search.[^6]
+they introduced a powerful new feature: AI search.[^7]
 This approach seems to follow the same path many companies are taking today.
 Instead of actually fixing their shit they seem to believe that AI will magically solve their issues.
 This is what Nikhil Suresh talks about in his great article
@@ -156,7 +159,106 @@ So while Confluence and Jira are useful for collaboration, I personally think th
 I'd prefer a git repository with text files over Confluence anytime.
 I'd always choose a GitHub or GitLab issue board over Jira.
 
-[^1]: Maven is one of the package and dependency management systems of Java, like Cargo or CMake
+## Developer experience
+
+The developer experience wasn't really any better than the user experience.
+It may be in the nature of proprietary products but we often felt like they didn't
+really care too much about the users and developers of their platforms.
+
+As mentioned above they didn't put too much effort into improving long-standing issues
+or requests from customers. The same was true for requests from developers.
+
+In their public request tracking list you can find issues that have been open for 20 years,
+have more than hundreds of upvotes and are still "gathering interest".
+For new features Atlassian could be excused with "insufficient resources" and the fact that third-party apps could fill the gap.
+But having to wait 20 years before the ability to rename a key *is even considered*?[^8]
+Advanced features such as numbered headings are "not being considered" since you can buy an app to do that for you.[^9]
+
+Those were some more user-facing examples.
+The more developer-facing it gets, the more obscure and weird it gets.
+
+Their REST API for their cloud products proved to be surprisingly unstable and slow.
+Calls could fail seemingly without reason, especially when we ran our automated integration tests for our apps.
+They could take multiple seconds to complete for simple request like querying some data.
+
+They tried to address the performance and reliability issues by introducing the new REST API version V2.
+However, they deprecated API V1 even before V2 was powerful enough to do the same things that V1 could do.[^10]
+
+Such slow APIs are also likely to result in high costs at runtime in their cloud infrastructure.
+Their solution to this problem was rate limiting.[^11] What a great solution!
+On their shiny new app development platform, the rate limit was so conservative that our customers were regularly experiencing problems.
+Your app's function can run no longer than 25 seconds before it is killed,
+you can create no more than 200 database queries in 20 seconds,
+you're not even allowed to log more than 30 lines per invocation.[^12]
+Like WTF?
+
+Atlassian is also notorious for introducing unnanounced breaking changes.
+This is the case for end-users[^13] but also for developers.
+For example in an update for their onsite products they introduced a "request whitelist".
+This new feature blocked all outbound traffic by default unless the destination URL was whitelisted.
+So our customers who updated Confluence broke our translation app, because outbound traffic was blocked at runtime.
+There was no programmatic approach to ask for a whitelist entry.
+All we could do was tell our customers to *manually* whitelist the URLs, but we still received dozens of complaints.
+
+Another time they made changes to the type that was returned when querying licence information without announcement.
+This resulted in many apps either crashing or incorrectly assuming they were unlicensed.
+The response time was quite slow so that we had to figure out the problem ourselves.
+The best part about debugging the issue was that the licence information was only available in production.
+So we had roll out new app versions to our customers for debugging the problem.
+Turned out they renamed a property from `isActive` to `active`.
+Thank you Atlassian for this great improvement and for the side effect of breaking hundreds of apps.
+Oh and apart from not informing anybody about the change they didn't even update their documentation.
+In our team we used to joke a lot about the notoriously bad or non-existent documentation that Atlassian provides.
+
+![TODO](/unannounced-api-changes.png)
+
+They even managed to introduce breaking changes with rate limiting, in such a way that apps became unusable.[^14]
+Now that's an achievement.
+
+Also Atlassian really doesn't care about technical correctness.
+They seem to prioritise new user-facing features and short-term revenue-generating functionality.
+One day I reported that they return the status code `200 OK` for Confluence pages that don't exist
+where the technically correct code would be `404 Not Found`.
+Their response was:
+
+> After discussing with our developers, it was clarified that the HTML document returned when requesting a page is not a documented, supported API.
+> If you need to verify the existence of a page, it's recommended to use one of the REST APIs, which will return a 404 as expected if the page does not exist. [...][^15]
+
+Similar things happended in the past[^16] and I had a strong feeling that they would never fix this.
+I reported this issue with the expectation of proving my point.
+
+And when you have a platform where people don't expect your platform to be reliable or correct
+you might loose developer's trust and those deveo
+
+# Conclusion
+
+Working with Atlassian's platforms has often been painful.
+And as time went on, I felt it was getting worse.
+They don't seem to care about technical correctness and long-term stability.
+Their excuses were often "resource constraints", meaning understaffing.
+But for AI enshittification and other features that people haven't asked for, they seem to be finding the resources.
+So I think they've got their priorities wrong.
+
+This may be a bit of an exaggeration, but I sometimes felt like I was living in a dictatorship when working in the Atlassian ecosystem.
+If the platform was free software, I could fix the technical problems myself, effectively solving the problem of understaffing.
+When users are unhappy about changes a fork could be created, forcing the vendor to think more about changes.
+So while I've been ranting about Atlassian in this article, I think that the underlying problem is the proprietary nature of the products.
+
+<!--
+Expressing frustration more openly: https://community.developer.atlassian.com/u/nathanwaters/summary
+
+- Pushing immature new platform "Forge" where most npm modules did not work (because of custom limiting NodeJS runtime, by now they partially switched to a normal NodeJS runtime, after 2 years of work) and storage is an "advanced" hashmap where not even queries with any logic is possible
+- https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12
+- Spurious callbacks in ECT cloud page publish event (not even bothered to report because unreliable and would not have fixed anyways)
+- https://jira.atlassian.com/browse/JRASERVER-25092 AND https://jira.atlassian.com/browse/JRASERVER-66244
+- https://community.developer.atlassian.com/t/finding-a-page-by-title/41553/7
+
+==> Leading to inactive or non-communicative community
+==> Slow & unreliable & rate limited API inevitably leads to slow, unreliable and rate limited apps
+-->
+
+
+[^1]: Maven is one of the package and dependency management systems of Java. Like Cargo for Rust or NPM for NodeJS.
 
 [^2]: <https://web.archive.org/web/20200814120012/https://www.atlassian.com/software/confluence/pricing?tab=self-managed>
 
@@ -166,4 +268,24 @@ I'd always choose a GitHub or GitLab issue board over Jira.
 
 [^5]: <https://community.atlassian.com/t5/Confluence-questions/Re-Confluence-search-function-complaints/qaq-p/872284/comment-id/117105#M117105>
 
-[^6]: <https://support.atlassian.com/confluence-cloud/docs/use-atlassian-intelligence-to-search-for-answers/>
+[^6]: <https://confluence.atlassian.com/jiracoreserver073/search-syntax-for-text-fields-861257223.html#PerformingTextSearches-escaping>
+
+[^7]: <https://support.atlassian.com/confluence-cloud/docs/use-atlassian-intelligence-to-search-for-answers/>
+
+[^8]: <https://jira.atlassian.com/browse/CONFSERVER-2085?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC>
+
+[^9]: <https://jira.atlassian.com/browse/CONFSERVER-1732?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC>
+
+[^10]: <https://community.developer.atlassian.com/t/confluence-rest-api-v2-update-to-v1-deprecation-timeline/75126/6>
+
+[^11]: <https://developer.atlassian.com/cloud/confluence/rate-limiting/>
+
+[^12]: <https://web.archive.org/web/20230326111348/https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/>
+
+[^13]: <https://community.atlassian.com/t5/Confluence-questions/Why-does-Atlassian-keep-breaking-Confluence/qaq-p/882544>
+
+[^14]: <https://community.developer.atlassian.com/t/forge-update-broke-our-app-in-100s-of-customer-instances-and-we-cant-do-anything-about-it/77751>
+
+[^15]: [Screenshot of service desk issue](/incorrect-status-code-support-ticket.png)
+
+[^16]: <https://jira.atlassian.com/browse/CONFCLOUD-14341>
