@@ -1,6 +1,6 @@
 +++
 title = "Experience with Atlassian"
-date = 2024-08-20
+date = 2024-08-26
 # updated = 2024-08-20
 
 [taxonomies]
