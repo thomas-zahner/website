@@ -67,7 +67,7 @@ From a technical standpoint those two platforms are identical. The only differen
 From a customer's perspective the main difference is the pricing.
 
 While you could get the Confluence server product for 10 users with a one-time payment of 10$,
-you had to pay at least 15'000$ per year for the smallest "data centre" licence for 500 users.[^2]
+you had to pay at least 15'000$ *per year* for the smallest "data centre" licence for 500 users.[^2]
 
 For the server licence you might expect to pay 500$ for 500 users, the pricing however is not linear.
 Instead you had to pay a whopping 30'000$ for 500 users.
@@ -93,7 +93,8 @@ And all I wanted was to read simple text content less than a single kilobyte in 
 ![Network tab in Firefox when loading a small Confluence page, showing 382 requests and 18 megabyes of transferred data](/confluence-network-tab.png)
 
 This is for Confluence "cloud".
-Their onsite products do feel more responsive since their forntend is not as bloated and dynamic.
+Their onsite products are more responsive since their forntend is not as bloated and dynamic.
+A lot of things are rendered server-side and good old jQuery is used instead of React.
 But the page load times aren't fast either.
 In fact, we had to upgrade our servers where we hosted Confluence after some time,
 because the Java application began to crash with `OutOfMemoryError`s.
@@ -208,9 +209,11 @@ So we had roll out new app versions to our customers for debugging the problem.
 Turned out they renamed a property from `isActive` to `active`.
 Thank you Atlassian for this great improvement and for the side effect of breaking hundreds of apps.
 Oh and apart from not informing anybody about the change they didn't even update their documentation.
-In our team we used to joke a lot about the notoriously bad or non-existent documentation that Atlassian provides.
+In our team we used to joke a lot about the notoriously bad or non-existent documentation.
 
-![TODO](/unannounced-api-changes.png)
+Below is a screenshot of our complaint.
+
+![Showing the misalignment of their documentation and the value in production in two screenshots. Text: We have found the issue, it seems that you changed the property names of the context. The name "isActive" has been changed to "active", the documentation on the other has NOT been updated and still shows "isActive" as the correct property name. There is no easy way to test this without deploying a version of the app to production and log the context, so it would be greatly appreciated if you could update the documentation when changing such vital things.](/unannounced-api-changes.png)
 
 They even managed to introduce breaking changes with rate limiting, in such a way that apps became unusable.[^14]
 Now that's an achievement.
@@ -238,11 +241,15 @@ They don't seem to care about technical correctness and long-term stability.
 Their excuses were often "resource constraints", meaning understaffing.
 But for AI enshittification and other features that people haven't asked for, they seem to be finding the resources.
 So I think they've got their priorities wrong.
+I would advise them to [move slower and fix things](https://endler.dev/2024/move-slow-and-fix-things/),
+but stakeholders probably prefer to see shiny new features and AI.
 
 This may be a bit of an exaggeration, but I sometimes felt like I was living in a dictatorship when working in the Atlassian ecosystem.
-If the platform was free software, I could fix the technical problems myself, effectively solving the problem of understaffing.
+If the platform was free software, I could fix the technical problems myself, effectively solving the problem of understaffing or wrong priorities.
 When users are unhappy about changes a fork could be created, forcing the vendor to think more about changes.
 So while I've been ranting about Atlassian in this article, I think that the underlying problem is the proprietary nature of the products.
+
+<br><br><br><br>
 
 <!--
 Expressing frustration more openly: https://community.developer.atlassian.com/u/nathanwaters/summary
