@@ -83,6 +83,8 @@ Content moves around dynamically and pops up until the page is fully loaded.
 
 A single page load causes Firefox to make more than 350 requests and transfer about 18 megabyes of data.
 And all I wanted was to read simple text content less than a single kilobyte in size.
+Unfortunately, Atlassian products are not the only bloated websites in the midst
+of [the website obesity crisis](https://idlewords.com/talks/website_obesity.htm).
 
 ![Network tab in Firefox when loading a small Confluence page, showing 382 requests and 18 megabyes of transferred data](/confluence-network-tab.png)
 
@@ -103,9 +105,6 @@ The logs are filled with warnings and error messages.
 
 ![17 errors and many more warnings showing up in the browser's console](/confluence-console-tab.png)
 
-Unfortunately, Atlassian products are not the only bloated websites in the midst
-of [the website obesity crisis](https://idlewords.com/talks/website_obesity.htm).
-
 What about responsive design?
 You would expect their products to be responsive and usable on mobile devices in today's world.
 Below is a screenshot of the product's administration settings, where you can manage user groups.
@@ -123,8 +122,9 @@ After a customer's complaint about the poor quality of search results,
 Atlassian went on to say that they could use third-party apps that might perform better
 or use analytics add-ons.[^5]
 
-They also have some weired "reserved words" you won't be able to search for to *keep the search index size and search performance optimal*
+They also have "reserved words" you won't be able to search for to *keep the search index size and search performance optimal*
 which leads to unexpected behaviour.[^6]
+The reserved words are everyday words such as "and", "the" and "this".
 
 But it gets even better.
 While they don't seem to bother to make search actually good and useful
