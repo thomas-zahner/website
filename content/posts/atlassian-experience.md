@@ -7,19 +7,13 @@ date = 2024-08-26
 tags = ["web", "rant"]
 +++
 
-So for the last four years I've been working in a company in a team where we developed apps and solutions for Atlassian products.
+For the last four years I've been working in a team where we developed apps for Atlassian products.
 Maybe you haven't heart of Atlassian but you probably know their products Jira and Confluence.
 Both can be extended with apps from the [Atlassian Marketplace](https://marketplace.atlassian.com).
 In this post, I'll share how both user and developer experience felt to me and our team.
 And to be honest, it wasn't very great.
 
 <!-- more -->
-
-If you work on extending a platform on a daily basis, you will inevitably also have to deal with the platform itself, its APIs and documentation on a daily basis.
-
-This is why you expect the platform to provide useful APIs which are well-documented, stable and integrate well.
-If this is not the case your productivity as developer and team will suffer and the developer experience (DX) will decline.
-I'd even argue that a bad developer experience can cause stress and reduce the happiness of software developers.
 
 But let's start from the very beginning.
 
@@ -54,7 +48,7 @@ The apps were no longer running inside the Java server directly, instead they ha
 and they communicated via HTTP REST APIs with the server.
 
 Over time Atlassian slowed down development of the self-hosted products and increased their efforts to add more new features to the cloud.
-They wanted all customers to migrate into their all-mighty cloud.
+They wanted all customers to migrate into their cloud.
 
 The cloud products brought some advantages such as easy setup and minimal maintainance.
 But many existing customers could not be convinced to switch over, as the migration process was not without problems.
@@ -93,7 +87,7 @@ And all I wanted was to read simple text content less than a single kilobyte in 
 ![Network tab in Firefox when loading a small Confluence page, showing 382 requests and 18 megabyes of transferred data](/confluence-network-tab.png)
 
 This is for Confluence "cloud".
-Their onsite products are more responsive since their forntend is not as bloated and dynamic.
+Their onsite products are more responsive since their frontend is not as bloated and dynamic.
 A lot of things are rendered server-side and good old jQuery is used instead of React.
 But the page load times aren't fast either.
 In fact, we had to upgrade our servers where we hosted Confluence after some time,
@@ -119,7 +113,7 @@ Or at least you could if your screen was big enough.
 
 ![Screenshot of admin settings from a mobile phone in landscape mode, showing a dysfunctional and unreadable table where the first column is so small that the text spans across the whole height of the screen](/mobile-responsiveness.png)
 
-Atlassian products also notorious for its poor search functionality.
+Atlassian products are also notorious for its poor search functionality.
 In the past (when I was still using Confluence) I would search for a page using a single word.
 The results wouldn't show the page containing that exact word, but other unrelated content.
 And searching for substrings of words on a page will *never* yield the page.
@@ -129,14 +123,14 @@ After a customer's complaint about the poor quality of search results,
 Atlassian went on to say that they could use third-party apps that might perform better
 or use analytics add-ons.[^5]
 
-They also have some weired "reserved words" you won't be able to search for to *to keep the search index size and search performance optimal*
+They also have some weired "reserved words" you won't be able to search for to *keep the search index size and search performance optimal*
 which leads to unexpected behaviour.[^6]
 
 But it gets even better.
 While they don't seem to bother to make search actually good and useful
 they introduced a powerful new feature: AI search.[^7]
 This approach seems to follow the same path many companies are taking today.
-Instead of actually fixing their shit they seem to believe that AI will magically solve their issues.
+Instead of actually fixing the problems, they seem to believe that AI will magically do it for them.
 This is what Nikhil Suresh talks about in his great article
 [I Will Fucking Piledrive You If You Mention AI Again](https://ludic.mataroa.blog/blog/i-will-fucking-piledrive-you-if-you-mention-ai-again/).
 
@@ -230,12 +224,16 @@ Their response was:
 Similar things happended in the past[^16] and I had a strong feeling that they would never fix this.
 I reported this issue with the expectation of proving my point.
 
-And when you have a platform where people don't expect your platform to be reliable or correct
-you might loose developer's trust and those deveo
-
 # Conclusion
 
-Working with Atlassian's platforms has often been painful.
+If you work on extending a platform on a daily basis,
+you will inevitably also have to deal with the platform itself, its APIs and documentation on a daily basis.
+
+This is why you expect the platform to provide useful APIs which are well-documented, stable and integrate well.
+If this is not the case your productivity as developer and team will suffer and the developer experience will decline.
+I'd even argue that a bad developer experience can cause stress and reduce the happiness of software developers.
+
+Working with Atlassian's platforms has often been the painful opposite.
 And as time went on, I felt it was getting worse.
 They don't seem to care about technical correctness and long-term stability.
 Their excuses were often "resource constraints", meaning understaffing.
@@ -243,11 +241,16 @@ But for AI enshittification and other features that people haven't asked for, th
 So I think they've got their priorities wrong.
 I would advise them to [move slower and fix things](https://endler.dev/2024/move-slow-and-fix-things/),
 but stakeholders probably prefer to see shiny new features and AI.
+If people find that your platform is unreliable or unstable, they may lose trust.
+These people are likely to move to another platform.
 
-This may be a bit of an exaggeration, but I sometimes felt like I was living in a dictatorship when working in the Atlassian ecosystem.
+It may be a bit of an exaggeration, but I sometimes felt like I was living in a dictatorship when I was working in the Atlassian ecosystem.
 If the platform was free software, I could fix the technical problems myself, effectively solving the problem of understaffing or wrong priorities.
 When users are unhappy about changes a fork could be created, forcing the vendor to think more about changes.
 So while I've been ranting about Atlassian in this article, I think that the underlying problem is the proprietary nature of the products.
+
+There is no shortage of FOSS alternatives to Atlassian products,
+and if they continue to perform as they have in recent years, companies may consider alternatives.
 
 <br><br><br><br>
 
