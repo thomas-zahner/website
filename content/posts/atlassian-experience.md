@@ -164,13 +164,19 @@ have more than hundreds of upvotes and are still "gathering interest".
 For new features Atlassian could be excused with "insufficient resources" and the fact that third-party apps could fill the gap.
 But having to wait 20 years before the ability to rename a key *is even considered*?[^8]
 Advanced features such as numbered headings are "not being considered" since you can buy an app to do that for you.[^9]
+Some people didn't like that too much:
+
+> Seriously Atlassian??? First you force us to use the f** cloud version and then you dont even provide the BASIC functinality of a standard Editor????
+> Why should be pay for this!? In the server version we hat the CSS functionality to do this stuff. Just implement the basic functions of the server version.
+> With our company (1000+ users) we tend o NOT move to the cloud version of confluence and rather change the tools.[^9]
+
+
 Those were some more user-facing examples.
 The more developer-facing it gets, the more obscure and weird it gets.
 
 Their REST API for their cloud products proved to be surprisingly unstable and slow.
 Calls could fail seemingly without reason, especially when we ran our automated integration tests for our apps.
 They could take multiple seconds to complete for simple request like querying some data.
-
 They tried to address the performance and reliability issues by introducing the new REST API version V2.
 However, they deprecated API V1 even before V2 was powerful enough to do the same things that V1 could do.[^10]
 
@@ -291,7 +297,7 @@ To conclude my post, here are a few selected quotes from the Atlassian forums th
 
 [^11]: [Rate limiting](https://developer.atlassian.com/cloud/confluence/rate-limiting/)
 
-[^12]: [Platform quotas and limits](https://web.archive.org/web/20230326111348/https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/)
+[^12]: [Forge platform quotas and limits](https://web.archive.org/web/20230326111348/https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/)
 
 [^13]: [Why does Atlassian keep breaking Confluence?](https://community.atlassian.com/t5/Confluence-questions/Why-does-Atlassian-keep-breaking-Confluence/qaq-p/882544)
 
