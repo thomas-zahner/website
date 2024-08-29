@@ -267,58 +267,46 @@ To conclude my post, here are a few selected quotes from the Atlassian forums th
 > Customer: “they sent me back to you”<br>
 > Me: “yeah again nothing we can do sorry, I can submit a ticket with them but considering they haven’t fixed many core Forge problems in over two years now it’s unlikely to be resolved any time soon. This is why our Forge apps are still free because we can’t justify charging customers.” [^21]
 
-
 <br><br><br><br>
-
-<!--
-Expressing frustration more openly: https://community.developer.atlassian.com/u/nathanwaters/summary
-
-- Pushing immature new platform "Forge" where most npm modules did not work (because of custom limiting NodeJS runtime, by now they partially switched to a normal NodeJS runtime, after 2 years of work) and storage is an "advanced" hashmap where not even queries with any logic is possible
-- Spurious callbacks in ECT cloud page publish event (not even bothered to report because unreliable and would not have fixed anyways)
-
-==> Leading to inactive or non-communicative community
-==> Slow & unreliable & rate limited API inevitably leads to slow, unreliable and rate limited apps
--->
-
 
 [^1]: Maven is one of the package and dependency management systems of Java. Like Cargo for Rust or NPM for NodeJS.
 
-[^2]: <https://web.archive.org/web/20200814120012/https://www.atlassian.com/software/confluence/pricing?tab=self-managed>
+[^2]: [Confluence pricing in August 2020](https://web.archive.org/web/20200814120012/https://www.atlassian.com/software/confluence/pricing?tab=self-managed)
 
-[^3]: <https://www.theregister.com/2024/08/05/atlassian_q4_2024/>
+[^3]: [Atlassian softens its cloud-first approach for remaining on-prem customers - The Register](https://www.theregister.com/2024/08/05/atlassian_q4_2024/)
 
-[^4]: <https://jira.atlassian.com/browse/CONFSERVER-10412>
+[^4]: [Support substring searches for terms used in Confluence](https://jira.atlassian.com/browse/CONFSERVER-10412)
 
-[^5]: <https://community.atlassian.com/t5/Confluence-questions/Re-Confluence-search-function-complaints/qaq-p/872284/comment-id/117105#M117105>
+[^5]: [Confluence search function complaints](https://community.atlassian.com/t5/Confluence-questions/Re-Confluence-search-function-complaints/qaq-p/872284/comment-id/117105#M117105)
 
-[^6]: <https://confluence.atlassian.com/jiracoreserver073/search-syntax-for-text-fields-861257223.html#PerformingTextSearches-escaping>
+[^6]: [Search syntax for text fields - Reserved words](https://confluence.atlassian.com/jiracoreserver073/search-syntax-for-text-fields-861257223.html#PerformingTextSearches-escaping)
 
-[^7]: <https://support.atlassian.com/confluence-cloud/docs/use-atlassian-intelligence-to-search-for-answers/>
+[^7]: [Use Atlassian Intelligence to search for answers](https://support.atlassian.com/confluence-cloud/docs/use-atlassian-intelligence-to-search-for-answers/)
 
-[^8]: <https://jira.atlassian.com/browse/CONFSERVER-2085?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC>
+[^8]: [Ability to rename space key](https://jira.atlassian.com/browse/CONFSERVER-2085?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC)
 
-[^9]: <https://jira.atlassian.com/browse/CONFSERVER-1732?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC>
+[^9]: [Numbered headings](https://jira.atlassian.com/browse/CONFSERVER-1732?filter=98691&jql=project%20%3D%20CONFSERVER%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20votes%20DESC)
 
-[^10]: <https://community.developer.atlassian.com/t/confluence-rest-api-v2-update-to-v1-deprecation-timeline/75126/6>
+[^10]: [Confluence REST API v2: Update to v1 Deprecation Timeline](https://community.developer.atlassian.com/t/confluence-rest-api-v2-update-to-v1-deprecation-timeline/75126)
 
-[^11]: <https://developer.atlassian.com/cloud/confluence/rate-limiting/>
+[^11]: [Rate limiting](https://developer.atlassian.com/cloud/confluence/rate-limiting/)
 
-[^12]: <https://web.archive.org/web/20230326111348/https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/>
+[^12]: [Platform quotas and limits](https://web.archive.org/web/20230326111348/https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/)
 
-[^13]: <https://community.atlassian.com/t5/Confluence-questions/Why-does-Atlassian-keep-breaking-Confluence/qaq-p/882544>
+[^13]: [Why does Atlassian keep breaking Confluence?](https://community.atlassian.com/t5/Confluence-questions/Why-does-Atlassian-keep-breaking-Confluence/qaq-p/882544)
 
-[^14]: <https://community.developer.atlassian.com/t/forge-update-broke-our-app-in-100s-of-customer-instances-and-we-cant-do-anything-about-it/77751>
+[^14]: [Forge update broke our app in 100s of customer instances and we can’t do anything about it](https://community.developer.atlassian.com/t/forge-update-broke-our-app-in-100s-of-customer-instances-and-we-cant-do-anything-about-it/77751)
 
 [^15]: [Screenshot of service desk issue](/incorrect-status-code-support-ticket.png)
 
-[^16]: <https://jira.atlassian.com/browse/CONFCLOUD-14341>
+[^16]: [Status code 403 instead of 200](https://jira.atlassian.com/browse/CONFCLOUD-14341)
 
-[^17]: <https://jira.atlassian.com/browse/JRASERVER-25092>
+[^17]: [Searching JIRA issues for special characters does not work](https://jira.atlassian.com/browse/JRASERVER-25092)
 
-[^18]: <https://jira.atlassian.com/browse/JRASERVER-66244>
+[^18]: [JQL search with special characters](https://jira.atlassian.com/browse/JRASERVER-66244)
 
-[^19]: <https://community.developer.atlassian.com/t/finding-a-page-by-title/41553>
+[^19]: [Finding a page by title](https://community.developer.atlassian.com/t/finding-a-page-by-title/41553)
 
-[^20]: <https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12>
+[^20]: [Forge invoke is very slow](https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12)
 
-[^21]: <https://community.developer.atlassian.com/t/first-returns-on-upgrade-to-forge-react-version-10/77988/12>
+[^21]: [Upgrading to @forge/react version 10](https://community.developer.atlassian.com/t/first-returns-on-upgrade-to-forge-react-version-10/77988/12)
