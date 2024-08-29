@@ -309,10 +309,11 @@ To conclude my post, here are a few selected quotes from the Atlassian forums th
 
 [^17]: [Searching JIRA issues for special characters does not work](https://jira.atlassian.com/browse/JRASERVER-25092)
 
-[^18]: [JQL search with special characters](https://jira.atlassian.com/browse/JRASERVER-66244)
+[^18]: [Upgrading to @forge/react version 10](https://community.developer.atlassian.com/t/first-returns-on-upgrade-to-forge-react-version-10/77988/12)
 
-[^19]: [Finding a page by title](https://community.developer.atlassian.com/t/finding-a-page-by-title/41553)
+[^19]: [JQL search with special characters](https://jira.atlassian.com/browse/JRASERVER-66244)
 
-[^20]: [Forge invoke is very slow](https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12)
+[^20]: [Finding a page by title](https://community.developer.atlassian.com/t/finding-a-page-by-title/41553)
 
-[^21]: [Upgrading to @forge/react version 10](https://community.developer.atlassian.com/t/first-returns-on-upgrade-to-forge-react-version-10/77988/12)
+[^21]: [Forge invoke is very slow](https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12)
+
