@@ -1,7 +1,7 @@
 +++
 title = "Experience with Atlassian"
 date = 2024-08-26
-# updated = 2024-08-20
+updated = 2024-08-29
 
 [taxonomies]
 tags = ["web", "rant"]
@@ -164,7 +164,7 @@ have more than hundreds of upvotes and are still "gathering interest".
 For new features Atlassian could be excused with "insufficient resources" and the fact that third-party apps could fill the gap.
 But having to wait 20 years before the ability to rename a key *is even considered*?[^8]
 Advanced features such as numbered headings are "not being considered" since you can buy an app to do that for you.[^9]
-Some people didn't like that too much:
+Some people didn't like that decision very much:
 
 > Seriously Atlassian??? First you force us to use the f** cloud version and then you dont even provide the BASIC functinality of a standard Editor????
 > Why should be pay for this!? In the server version we hat the CSS functionality to do this stuff. Just implement the basic functions of the server version.
