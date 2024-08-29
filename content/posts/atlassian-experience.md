@@ -15,8 +15,6 @@ And to be honest, it wasn't very great.
 
 <!-- more -->
 
-But let's start from the very beginning.
-
 ## On premise products
 
 When I started at the company all of our apps were targeting the Confluence or Jira "server" product.
@@ -93,7 +91,7 @@ Their onsite products are more responsive since their frontend is not as bloated
 A lot of things are rendered server-side and good old jQuery is used instead of React.
 But the page load times aren't fast either.
 In fact, we had to upgrade our servers where we hosted Confluence after some time,
-because the Java application began to crash with `OutOfMemoryError`s.
+because the application began to crash with `OutOfMemoryError`s.
 
 For the cloud apps we used Cypress to test the functionality and prevent regressions.
 With such a slow host product we had to adjust the default waiting timeout for HTML elements from 5 seconds to 20 seconds to have reliable tests.
@@ -142,7 +140,7 @@ can be used for most tasks.
 
 I remember one day Confluence automatically started to highlight some terms and abbreviations on all of our pages.
 The AI tried to explain the meaning of those words.
-For example, it tried to explain that our company's name actually meant something none of us knew before.
+For example, it tried to explain that our company name actually meant something none of us knew before.
 It felt like an April Fool's joke.
 Luckily, the next day the feature was gone.
 But I can't remember if our admin disabled the feature or if Atlassian rolled it back.
@@ -151,15 +149,13 @@ But my colleagues and I never felt the need for these features.
 Did *anybody* ask for those features? Maybe their stakeholders.
 
 So while Confluence and Jira are useful for collaboration, I personally think the UX is terrible.
-I'd prefer a git repository with text files over Confluence anytime.
-I'd always choose a GitHub or GitLab issue board over Jira.
+There are alternatives today, and I'd probably prefer any of them.
 
 ## Developer experience
 
 The developer experience wasn't really any better than the user experience.
 It may be in the nature of proprietary products but we often felt like they didn't
 really care too much about the users and developers of their platforms.
-
 As mentioned above they didn't put too much effort into improving long-standing issues
 or requests from customers. The same was true for requests from developers.
 
@@ -168,7 +164,6 @@ have more than hundreds of upvotes and are still "gathering interest".
 For new features Atlassian could be excused with "insufficient resources" and the fact that third-party apps could fill the gap.
 But having to wait 20 years before the ability to rename a key *is even considered*?[^8]
 Advanced features such as numbered headings are "not being considered" since you can buy an app to do that for you.[^9]
-
 Those were some more user-facing examples.
 The more developer-facing it gets, the more obscure and weird it gets.
 
@@ -228,7 +223,6 @@ I reported this issue with the expectation of proving my point.
 
 If you work on extending a platform on a daily basis,
 you will inevitably also have to deal with the platform itself, its APIs and documentation on a daily basis.
-
 This is why you expect the platform to provide useful APIs which are well-documented, stable and integrate well.
 If this is not the case your productivity as developer and team will suffer and the developer experience will decline.
 I'd even argue that a bad developer experience can cause stress and reduce the happiness of software developers.
@@ -248,9 +242,31 @@ It may be a bit of an exaggeration, but I sometimes felt like I was living in a 
 If the platform was free software, I could fix the technical problems myself, effectively solving the problem of understaffing or wrong priorities.
 When users are unhappy about changes a fork could be created, forcing the vendor to think more about changes.
 So while I've been ranting about Atlassian in this article, I think that the underlying problem is the proprietary nature of the products.
-
 There is no shortage of FOSS alternatives to Atlassian products,
 and if they continue to perform as they have in recent years, companies may consider alternatives.
+
+To conclude my post, here are a few selected quotes from the Atlassian forums that capture the general sentiment.
+
+> Jira filters are atrocious! Filters on databases have been possible since the 70s... maybe even earlier... Why is this so bad? The poor and unpredictable results have seriously hampered my work, and as they are not reliable, mistakes have been made which cost my project time, effort and money. Desperately trying to convince management to migrate away from Jira and find a different solution.[^17]
+
+> My dudes, this is way too many breaking changes. It’s at version 10 and you’re renaming/removing props. Why were those basic things not solidified many versions ago?
+> Most of these changes seem to be nothing more than opinionated aesthetics. [...]
+> Almost all of the changes are frivolous. It’d be funny if it didn’t waste developer time.[^18]
+
+> Is this for real?
+> Please fix this BUG, unbelievable...[^19]
+
+> If you ever want to retrieve one or multiple pages by title using the Confluence REST API and thought that would be a matter of one simple call against the CQL or Content REST API, you have been fooled by a collection of bugs in the REST endpoints of Confluence Cloud and Server.[^20]
+
+> Support interaction this morning:
+>
+> Customer: “it’s very slow”<br>
+> Me: “nothing we can do sorry, it’s using Atlassian’s UI Kit and is served/hosted on their infrastructure”<br>
+> Customer: emails Atlassian support<br>
+> Atlassian support: “you’ll need to engage with the vendor”<br>
+> Customer: “they sent me back to you”<br>
+> Me: “yeah again nothing we can do sorry, I can submit a ticket with them but considering they haven’t fixed many core Forge problems in over two years now it’s unlikely to be resolved any time soon. This is why our Forge apps are still free because we can’t justify charging customers.” [^21]
+
 
 <br><br><br><br>
 
@@ -258,10 +274,7 @@ and if they continue to perform as they have in recent years, companies may cons
 Expressing frustration more openly: https://community.developer.atlassian.com/u/nathanwaters/summary
 
 - Pushing immature new platform "Forge" where most npm modules did not work (because of custom limiting NodeJS runtime, by now they partially switched to a normal NodeJS runtime, after 2 years of work) and storage is an "advanced" hashmap where not even queries with any logic is possible
-- https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12
 - Spurious callbacks in ECT cloud page publish event (not even bothered to report because unreliable and would not have fixed anyways)
-- https://jira.atlassian.com/browse/JRASERVER-25092 AND https://jira.atlassian.com/browse/JRASERVER-66244
-- https://community.developer.atlassian.com/t/finding-a-page-by-title/41553/7
 
 ==> Leading to inactive or non-communicative community
 ==> Slow & unreliable & rate limited API inevitably leads to slow, unreliable and rate limited apps
@@ -299,3 +312,13 @@ Expressing frustration more openly: https://community.developer.atlassian.com/u/
 [^15]: [Screenshot of service desk issue](/incorrect-status-code-support-ticket.png)
 
 [^16]: <https://jira.atlassian.com/browse/CONFCLOUD-14341>
+
+[^17]: <https://jira.atlassian.com/browse/JRASERVER-25092>
+
+[^18]: <https://jira.atlassian.com/browse/JRASERVER-66244>
+
+[^19]: <https://community.developer.atlassian.com/t/finding-a-page-by-title/41553>
+
+[^20]: <https://community.developer.atlassian.com/t/forge-invoke-is-very-slow/68746/12>
+
+[^21]: <https://community.developer.atlassian.com/t/first-returns-on-upgrade-to-forge-react-version-10/77988/12>
