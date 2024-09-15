@@ -9,14 +9,15 @@ A website to calculate the solution of sudoku puzzles.
 The algorithm was written in both Rust and JavaScript. The Rust code is compiled into WebAssembly.
 The solution is then calculated with both implementations so that their speed can be compared.
 
+## [long-running-task](https://github.com/thomas-zahner/long-running-task)
+
+A simple Rust library to handle [long-running tasks](https://restfulapi.net/rest-api-design-for-long-running-tasks/)
+in combination with web-frameworks such as [Rocket](https://rocket.rs/).
+
 ## [Chess engine](https://gitlab.com/thomas-zahner/chess-engine)
 
 A very primitive (and correspondingly slow) chess engine which was implemented in Rust.
 It is run and used as CLI in the terminal.
-
-## [Rooty](https://gitlab.com/thomas-zahner/rooty)
-
-A browser plugin to add a beautiful, simple and effective home page to your browser.
 
 ## [Link management tool - LMT](https://gitlab.com/lmt7360522/lmt)
 
@@ -30,3 +31,7 @@ lychee is a fast and async link checker written in Rust, started by [Matthias En
 I started contributing to lychee in 2023 as part of my bachelor thesis.
 Since the beginning of 2024 I am a maintainer of lychee.
 In 2024 - as part of my full-time job - I extended lychee with a [RequestChain](https://docs.rs/lychee-lib/0.15.1/lychee_lib/chain/index.html). This allows library users to modify the behaviour of lychee in a plugin-like manner.
+
+## [Rooty](https://gitlab.com/thomas-zahner/rooty)
+
+A browser plugin to add a beautiful, simple and effective home page to your browser.
