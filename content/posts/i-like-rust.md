@@ -27,7 +27,7 @@ JavaScript's conversion are so weired and unexpected.. TODO: <https://www.reddit
 
 ## An example
 
-Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically the naming was bad and the implementation of this type was inconsistent, poorly designed and thread-unsafe \[<https://www.baeldung.com/java-8-date-time-intro>\]. This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002). \[<https://docs.oracle.com/javase/8/docs/api/java/util/Date.html>\] So today this type only exists for backwards compatibility and to confuse new developers. Instantiating this type can for example be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
+Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically the naming was bad and the implementation of this type was inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility and to confuse new developers. Instantiating this type can for example be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
 
 ```java
 new Date(0, 0, 0) // Sun Dec 31 00:00:00 CET 1899
@@ -60,7 +60,7 @@ Object forgetCompileTypeInfo = x; // everything is an object
 return (String) forgetCompileTypeInfo; // oh no, a runtime error
 ```
 
-In Rust that's not possible. Casts must be valid at the type level, or else they will be prevented statically.\[<https://doc.rust-lang.org/nomicon/casts.html#safety-of-casting>\] Not checking for type constraints at compile time, or worse, doing conversions at runtime to somehow satisfy type constraints, [as JavaScript does](https://eqeq.js.org/), leads to more bugs and costs.
+In Rust that's not possible. Casts must be valid at the type level, or else they will be prevented statically.[^3] Not checking for type constraints at compile time, or worse, doing conversions at runtime to somehow satisfy type constraints, as JavaScript does[^4], leads to more bugs and costs.
 
 ## No billion dollar bug
 
@@ -93,7 +93,7 @@ Error messages in Rust are awesome. They're super helpful, concise and correct. 
 
 Runtime errors in Rust are a rarer phenomenon but they will be just as clear as the error messages by the compiler. Most of the time the concise messages are enough to track down the mistake. Optionally backtraces can be enabled as Rust provides a tiny runtime.
 
-If you create a stack overflow with C++ the error message could look like this. \[<https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/>\]
+If you create a stack overflow with C++ the error message could look like this[^5]:
 
 ```
 HelloWorld.exe (process 15916) exited with code -1073741571.
@@ -118,7 +118,7 @@ With Rust you don't have to be a coding wizard to understand error messages. In 
 
 When writing software these days, you will probably sooner or later depend on external libraries. This is why dependency management shouldn't be a pain. Many languages evolved before streamlined dependency management was a thing. I think NPM, the package manager for NodeJS was the first good dependency management system for a programming language. I became very popular and might be the main reason why NodeJS itself got so popular. One thing I dislike about the NPM ecosystem is that dependency graphs tend to be huge. This is not a problem of NPM itself. To some extent it might be a problem of NodeJS or JavaScript. Simple things like cloning objects or comparing objects for equality are not possible out of the box. When people in an ecosystem tend to add dependencies to their libraries without much thought it becomes the norm. Rustaceans seem to be more conservative about adding dependencies to their projects. Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements. With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
 
-Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall in 2008, which was later renamed to pip. \[<https://www.pypa.io/en/latest/history/>\] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
+Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^6] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
 
 Cargo makes managing dependencies and building your project as easy as it gets.
 
@@ -164,3 +164,15 @@ Languages such as C++ and JavaScript have evolved a lot over time. There have be
 
 The same could theoretically happen to Rust.  
 But I think it is less likely to happen and if it did then to a much lesser extent. There even are people who think this already happened with async/await. TODO: citation But Rust feels like its foundations were designed so robustly that it won't have to change as radically as other languages have over time.
+
+[^1]: [Issues with the existing Date/Time APIs](https://www.baeldung.com/java-8-date-time-intro#issues)
+
+[^2]: [The Java Date class](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
+
+[^3]: [The Rustonomicon on the safety of casting](https://doc.rust-lang.org/nomicon/casts.html#safety-of-casting)
+
+[^4]: Some conversions in JavaScript are so obscure that you could be called crazy if you understood them all. Put your knowledge to the test with [eqeq.js.org](https://eqeq.js.org)
+
+[^5]: [LearnCpp.com - The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/)
+
+[^6]: [Python's packaging history](https://www.pypa.io/en/latest/history/)
