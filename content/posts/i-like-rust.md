@@ -6,7 +6,7 @@ date = 2024-10-02
 tags = ["rust"]
 +++
 
-If you were to ask me what my favourite programming language is, my answer would be Rust. For the majority of projects I'd prefer Rust to all other languages I know. This is not because I simply like the syntax of Rust, but because with Rust I can write code quickly and with confidence that it will work. More so than with any other language.
+If you were to ask me what my favourite programming language is, my answer would be Rust. For the majority of projects I'd prefer Rust to any other language I know. This is not because I simply like the syntax of Rust, but because with Rust I can write code quickly and with confidence that it will work. More so than with any other language.
 
 <!-- more -->
 
@@ -15,15 +15,13 @@ If you were to ask me what my favourite programming language is, my answer would
 First of all, Rust as a language deeply cares about correctness and doing things the right way.
 This also applies to the ecosystem surrounding the language such as the standard library and the crates on crates.io.
 
-The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory-safe language. Violating ownership, type or lifetime constraints would potentially lead to undefined behaviour so that Rust has to be inherently pedantic about enforcing such rules in order to be memory-safe. But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety. It runs throughout Rust's narrative.
+The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory safe language. Violating ownership, type or lifetime constraints would potentially lead to undefined behaviour so that Rust has to be inherently pedantic about enforcing such rules in order to be memory safe. But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety. It runs throughout Rust's narrative.
 
 Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both. Rust programs can and are formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
 
 Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.x.x) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. Correct SemVer also means no incompatible API changes with the release of patch (x.x.1) and minor (x.1.x) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
 
 When you work with functions and types from the standard library, you can feel just how much thought and polish has gone into the design. This vastly contrasts with most other languages I've used such as JavaScript or Java.
-
-JavaScript's conversion are so weired and unexpected.. TODO: <https://www.reddit.com/r/ProgrammerHumor/comments/225i15/proof_that_brendan_eich_never_really_cared_about/>
 
 ## An example
 
@@ -124,39 +122,50 @@ Cargo makes managing dependencies and building your project as easy as it gets.
 
 ## Rust is practical
 
-Rust is surprisingly practical and ergonomic to use from a developer's point of view. You do have a very strict compiler, but prototyping is sill easier than in other languages by making use of the [`todo` macro](https://doc.rust-lang.org/std/macro.todo.html). Don't know what to return from a function yet? Simply return `todo`. Even though there are debuggers, printing variables and variable names is something developers do way too much. Just use [`dbg`](https://doc.rust-lang.org/std/macro.dbg.html) to print whole expressions with their value, file name and line numbers. To clone or compare objects you don't have write boilerplate code, you don't need any libraries and you don't need much experience. You just mark a structure with `Clone` or `Eq`, that's one line of code.
+Rust is surprisingly practical and ergonomic to use from a developer's point of view.
+The type system is very strict, but type annotations are often optional because they are inferred.
+Prototyping can be easier than in other languages by making use of the [`todo` macro](https://doc.rust-lang.org/std/macro.todo.html).
+Don't know what to return from a function yet? Simply return `todo`.
+Even though there are debuggers, printing variables and variable names is something developers do way too much.
+Just use [`dbg`](https://doc.rust-lang.org/std/macro.dbg.html) to print whole expressions with their value, file name and line numbers.
+To clone or compare objects you don't have to write boilerplate code, you don't need any libraries and you don't need much experience.
+You just mark a structure with `Clone` or `Eq`, that's one line of code.
 
 ## Compilation times
 
 When people complain about Rust they often mention compile times.
 It's true that compilation of Rust projects do take their time.
-But compiling large C++ or Java projects really isn't any faster.
+But compiling C++ or Java projects really isn't any faster.
 Given Rust's abstractions and complex rules, I'm actually impressed that Rust is on par with other languages.
 In practice, compile times rarely bother me.
-I recompile my Rust programs less, because more bugs are caught by the rust-analyser in my IDE, rather than during test execution.
+I recompile my Rust programs less, because more bugs are caught by rust-analyser in my IDE, rather than during test execution.
+Compile times have improved over the last years and they will continue to improve.
+If you have issues with compilation times there are [many ways to further improve them](https://corrode.dev/blog/tips-for-faster-rust-compile-times/).
 
 ## Hard to learn
 
 The Rust compiler is strict, that's no secret. As a beginner it can be difficult to get basic programs to compile. Understanding the concepts of the language such as ownership is therefore essential. Fortunately, the official [Rust book](https://doc.rust-lang.org/stable/book/) is perfect for learning all these concepts, and the Rust compiler will also help you along the way.
 
-You will encounter compilation errors even if you understand the basic concepts, probably more often than in any other language. There will be cases where you have no idea how to fix the problem at first. Eventually, you might realise that you will have to rethink your whole approach to the problem.
+You will encounter compilation errors probably more often than in any other language.
+There will be cases where you have no idea how to fix the problem at first.
+Eventually, you might realise that you will have to rethink your whole approach to the problem.
 
-This was the hardest part for me (and still is) when working Rust. Sometimes the compiler forces you to rethink your approach. You realise that you can't bend the borrow checker to your will, instead you have to work with it. The compiler is your mentor not your enemy to fight.
+This was the hardest part for me (and still is) when working with Rust. Sometimes the compiler forces you to rethink your approach. You realise that you can't bend the borrow checker to your will, instead you have to work with it. The compiler is your mentor not your enemy to fight.
 
-Personally, I started learning Rust during the Covid pandemic. At that time we had a course about algorithms and data structures at uni and I decided to implement the exercises in Rust instead of Java. After reading the first few chapters of the Rust book, I felt confident enough to give it a try. I was able to implement some algorithms and was happy with the results. But I got lost and confused when I tried to implement a binary tree myself. After trail and error, I did some research and came across a chapter in the book I hadn't read yet. Turns out that data structures in Rust can get complicated very quickly. On top of ownership you also need to know about smart pointers, interior mutability, reference counting, reference cycles...  
+Personally, I started learning Rust during the Covid pandemic. At the time we had a course on algorithms and data structures at university and I decided to implement the exercises in Rust instead of Java. After reading the first few chapters of the Rust book, I felt confident enough to give it a try. I was able to implement some algorithms and was happy with the results. But I got lost and confused when I tried to implement a binary tree myself. After trail and error, I did some research and came across a chapter in the book I hadn't read yet. Turns out that data structures in Rust can get complicated very quickly. On top of ownership you also need to know about smart pointers, interior mutability, reference counting, reference cycles...
 I was overwhelmed and discouraged. But I realised that data structures were not the best starting point for learning Rust. And that in the real world you would make use of the standard library and crates built by smart people anyway.
 
 After that, I tried to implement simple things with Rust. Over time I almost forgot about the concepts I read about when dealing with binary trees. It turns out that programming "normal" things in Rust is much easier than I though. The only thing you really need to understand is ownership. Understanding lifetimes, interior mutability, etc. is great, but in "normal" code you almost never make use of these concepts.
 
 ## Conclusion
 
-TODO
-
-Harder to get a program to compile. But learning with the Rust book and guides you will learn a lot. Because the book is great and when you get compilation errors you learn a lot too. I'd argue that the learning experience might be better than with Python or NodeJS.
-
 In my opinion, Rust is the pinnacle of modern compiler and language development.
 The design choices show how the developers have learned from the problems and mistakes in other languages.
 The introduction of new concepts such as the borrow checker makes the Rust compiler probably the most complex compiler out there.
+
+TODO: connect above and below
+
+In Rust it's harder to get a program to compile compared to other languages. You need to understand some basic concepts that might not exist in other languages, but the Rust book provides you with all that knowledge. You might spend more time addressing compilation errors and thinking about how to solve a problem than in other languages. But all this will pay off when your program compiles, because you will rarely run into unexpected problems at runtime. Rust forces you to think hard up front, but rewards you in the future with far fewer bugs and lower maintenance costs. This makes software development more sustainable, and since most of us prefer to write new code, it could make our lives more fun again.
 
 TODO other ideas:
 
