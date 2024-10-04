@@ -72,7 +72,11 @@ Personally, I think it is a bad decision to use dynamically typed languages for 
 
 Some people, especially beginners, think languages without static types are "easier". Every programming language (maybe with the exception of assembly) has some sort of type system. The main difference between statically and dynamically typed languages becomes apparent when programmers make mistakes. With statically typed languages the compiler complains about the mistake. In dynamically typed languages the program will crash at runtime, or worse lead to subsequent bugs that will be noticed only much later. Catching errors at runtime, perhaps in production, is far worse than a compiler error message. So it would only seem natural for programmers to prefer statically typed languages, unless you never make mistakes.
 
-TODO: add image <https://www.researchgate.net/figure/IBM-System-Science-Institute-Relative-Cost-of-Fixing-Defects_fig1_255965523>
+It might be obvious that problems caught in production are worse than problems noticed during implementation.
+But the effective cost difference is huge.
+IBM showed this in [a study](https://www.researchgate.net/publication/255965523_Integrating_Software_Assurance_into_the_Software_Development_Life_Cycle_SDLC) conducted in 2010.
+
+![IBM System Science Institute. A graph depicting the relative cost of fixing defects. "Design" has a cost of 1, "implementation" a cost of 6.5, "testing" a cost of 15 and "maintenance" a cost of 100.](/ibm-relative-cost-of-fixing-defects.png)
 
 Rust is as statically typed and type safe as you could possibly get with a "real" programming language. Static types don't automatically lead to type safety. For example in Java you can do the following to trick the compiler and cause a runtime error:
 
