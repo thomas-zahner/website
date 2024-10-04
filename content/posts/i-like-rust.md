@@ -64,9 +64,7 @@ In Rust that's not possible. Casts must be valid at the type level, or else they
 
 Many languages have incorporated the concept of lack of value into the language, with special keywords like `null`, `nil` or similar. Any time you pass a value by reference, which is the default in many languages (Java, C#, Python, ...), the value can be absent. This concept was introduced by Tony Hoare into ALGOL and has become the norm for most programming languages. However, introducing such a special value that can be present everywhere in the system by default, means you have to handle the special value everywhere with additional code, otherwise you might create bugs. Conventions and best practices started to appear, about when to use this special value. Over time people started to agree that this special value shouldn't be everywhere by default. The inventor himself apologised for introducing the concept in the first place.
 
-> But I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.
-
-https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
+> But I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.[^5]
 
 Rust is one of the languages which does not know a special null value. You must opt in for the possible absence of a value. This is done with the `Option<T>` type.
 
@@ -91,7 +89,7 @@ Error messages in Rust are awesome. They're super helpful, concise and correct. 
 
 Runtime errors in Rust are a rarer phenomenon but they will be just as clear as the error messages by the compiler. Most of the time the concise messages are enough to track down the mistake. Optionally backtraces can be enabled as Rust provides a tiny runtime.
 
-If you create a stack overflow with C++ the error message could look like this[^5]:
+If you create a stack overflow with C++ the error message could look like this[^6]:
 
 ```
 HelloWorld.exe (process 15916) exited with code -1073741571.
@@ -116,7 +114,7 @@ With Rust you don't have to be a coding wizard to understand error messages. In 
 
 When writing software these days, you will probably sooner or later depend on external libraries. This is why dependency management shouldn't be a pain. Many languages evolved before streamlined dependency management was a thing. I think NPM, the package manager for NodeJS was the first good dependency management system for a programming language. I became very popular and might be the main reason why NodeJS itself got so popular. One thing I dislike about the NPM ecosystem is that dependency graphs tend to be huge. This is not a problem of NPM itself. To some extent it might be a problem of NodeJS or JavaScript. Simple things like cloning objects or comparing objects for equality are not possible out of the box. When people in an ecosystem tend to add dependencies to their libraries without much thought it becomes the norm. Rustaceans seem to be more conservative about adding dependencies to their projects. Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements. With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
 
-Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^6] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
+Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^7] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
 
 Cargo makes managing dependencies and building your project as easy as it gets.
 
@@ -160,12 +158,16 @@ After that, I tried to implement simple things with Rust. Over time I almost for
 ## Conclusion
 
 In my opinion, Rust is the pinnacle of modern compiler and language development.
-The design choices show how the developers have learned from the problems and mistakes in other languages.
-The introduction of new concepts such as the borrow checker makes the Rust compiler probably the most complex compiler out there.
-
-TODO: connect above and below
-
-In Rust it's harder to get a program to compile compared to other languages. You need to understand some basic concepts that might not exist in other languages, but the Rust book provides you with all that knowledge. You might spend more time addressing compilation errors and thinking about how to solve a problem than in other languages. But all this will pay off when your program compiles, because you will rarely run into unexpected problems at runtime. Rust forces you to think hard up front, but rewards you in the future with far fewer bugs and lower maintenance costs. This makes software development more sustainable, and since most of us prefer to write new code, it could make our lives more fun again.
+The deliberate design choices in the language show how the developers have learned from the problems in other languages.
+The introduction of new concepts such as the borrow checker make the Rust compiler probably the most complex compiler out there.
+In Rust it might be harder to get a program to compile.
+You need to understand some basic concepts that might not exist in other languages,
+but the Rust book provides you with all that knowledge.
+You might spend more time addressing compilation errors and thinking about how to solve a problem than in other languages.
+But all this will pay off when your program compiles, because you will rarely run into unexpected problems at runtime.
+Rust forces you to think hard up front, but rewards you in the future with far fewer bugs and lower maintenance costs.
+This makes software development more sustainable, and since most of us prefer to write new code over fixing bugs,
+it could make our lives more fun again.
 
 TODO other ideas:
 
@@ -182,6 +184,8 @@ But I think it is less likely to happen and if it did then to a much lesser exte
 
 [^4]: Some conversions in JavaScript are so obscure that you could be called crazy if you understood them all. Put your knowledge to the test with [eqeq.js.org](https://eqeq.js.org)
 
-[^5]: [LearnCpp.com - The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/)
+[^5]: [Null references - The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/)
 
-[^6]: [Python's packaging history](https://www.pypa.io/en/latest/history/)
+[^6]: [LearnCpp.com - The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/)
+
+[^7]: [Python's packaging history](https://www.pypa.io/en/latest/history/)
