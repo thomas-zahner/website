@@ -42,6 +42,24 @@ System.out.println(d); // 2021-02-28
 
 In stark contrast to Java, the Rust standard library is meticulously correct and polished. Rust developers learned form the mistakes made in the past. Rust is conservative when it comes to adding new features. Only once they have proven useful in other languages or in popular libraries they are considered to be added.
 
+## Technical debt
+
+The previous example shows how the concept of technical debt also applies to programming languages.
+In fact, debts in language design weigh much heavier.
+Once a language has commited a mistake, it cannot be undone without breaking backwards compatibility.
+
+Some established languages have evolved significantly over time.
+There have been many additions when new conepts and approaches got popular.
+Some new approaches replaced existing ones, but they couldn't be removed because of the need to maintain backwards compatibility.
+This leads to conventions and best practices.
+Previous best practices become outdated and frowned upon.
+The language accumulates complexity as its technical debt continues to grows.
+
+C++, for example, has become so complicated over time that "modern C++" conventions have been created
+where only a subset of the language should be used.
+Although it is natural for a language to evolve to some extent, too much change can be unhealthy.
+My feeling about Rust is that its foundations are so robust that it won't change as radically as other languages have over time.
+
 ## Types
 
 Personally, I think it is a bad decision to use dynamically typed languages for anything other than small projects or scripting. Look at any popular dynamically typed language ([Python](https://docs.python.org/3/library/typing.html), [PHP](https://www.php.net/manual/en/language.types.declarations.php), [JavaScript](https://www.typescriptlang.org/), ...) and you will see the same trend; the desire for more type safety. Unfortunately, they will never be able to achieve type safety.
@@ -168,13 +186,6 @@ But all this will pay off when your program compiles, because you will rarely ru
 Rust forces you to think hard up front, but rewards you in the future with far fewer bugs and lower maintenance costs.
 This makes software development more sustainable, and since most of us prefer to write new code over fixing bugs,
 it could make our lives more fun again.
-
-TODO other ideas:
-
-Languages such as C++ and JavaScript have evolved a lot over time. There have been many additions to the languages when new conepts and approaches got popular. Some new approaches replaced existing ones but languages have to remain backwards compatible. Some additions were never anticipated in the initial design of the languages. This can lead to features that feel out of place. Previous best practices become outdated and frowned upon. Maybe this is natural to all languages to some extent.
-
-The same could theoretically happen to Rust.  
-But I think it is less likely to happen and if it did then to a much lesser extent. There even are people who think this already happened with async/await. TODO: citation But Rust feels like its foundations were designed so robustly that it won't have to change as radically as other languages have over time.
 
 [^1]: [Issues with the existing Date/Time APIs](https://www.baeldung.com/java-8-date-time-intro#issues)
 
