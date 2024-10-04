@@ -155,7 +155,13 @@ Don't know what to return from a function yet? Simply return `todo`.
 Even though there are debuggers, printing variables and variable names is something developers do way too much.
 Just use [`dbg`](https://doc.rust-lang.org/std/macro.dbg.html) to print whole expressions with their value, file name and line numbers.
 To clone or compare objects you don't have to write boilerplate code, you don't need any libraries and you don't need much experience.
-You just mark a structure with `Clone` or `Eq`, that's one line of code.
+
+You just mark a structure with `Clone` or `Eq`, that's one simple line of code.
+You like linters? Rust comes with [Clippy <img src="/clippy.webp" height="25" style="border: none;">](https://doc.rust-lang.org/stable/clippy/usage.html),
+the most strict and annoying linter.
+Have you made enemies by fighting over code formatting rules?
+In Rust, the war is over because there is the [official style guide](https://doc.rust-lang.org/beta/style-guide/index.html),
+which you never have to think about because your IDE or editor uses rustfmt anyway.
 
 ## Compilation times
 
