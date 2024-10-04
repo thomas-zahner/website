@@ -17,9 +17,9 @@ This also applies to the ecosystem surrounding the language such as the standard
 
 The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory safe language. Violating ownership, type or lifetime constraints would potentially lead to undefined behaviour so that Rust has to be inherently pedantic about enforcing such rules in order to be memory safe. But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety. It runs throughout Rust's narrative.
 
-Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both. Rust programs can and are formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
+Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both things. Rust programs can and are formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
 
-Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.x.x) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. Correct SemVer also means no incompatible API changes with the release of patch (x.x.1) and minor (x.1.x) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
+Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.\*.\*) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. Correct SemVer also means no incompatible API changes with the release of patch (\*.\*.1) and minor (\*.1.\*) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
 
 When you work with functions and types from the standard library, you can feel just how much thought and polish has gone into the design. This vastly contrasts with most other languages I've used such as JavaScript or Java.
 
@@ -32,11 +32,17 @@ new Date(0, 0, 0) // Sun Dec 31 00:00:00 CET 1899
 new Date(0, 33, 0); // Tue Sep 30 00:00:00 CET 1902 
 ```
 
-The developers quickly realised how terrible the implementation was. After deprecation, you would use third-party libraries instead. This was until Java 8 (or 1.8, Java versions don't make sense) where it was decided to reimplement the date type into the standard library by copying the now popular and established libraries. This implementation was indeed much better, however I still noticed inaccuracies. For example you won't notice when an invalid date in the following case is provided.
+The implementation was terrible. After deprecation, you would use third-party libraries instead. This was until Java 8 (or 1.8, Java versions don't make sense) where it was decided to reimplement the date type into the standard library by copying the now popular and established libraries. This implementation was indeed much better, however I still noticed inaccuracies. For example you won't notice when an invalid date in the following case is provided.
 
 ```java
 DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-LocalDate         d = LocalDate.parse("2021-02-31", f); // should throw exception with invalid date
+
+// Official documentation
+// Throws:
+//    DateTimeParseException - if the text cannot be parsed
+LocalDate d = LocalDate.parse("2021-02-31", f);
+
+// ah never mind, the date is silently rounded off in this case... 
 System.out.println(d); // 2021-02-28
 ```
 
