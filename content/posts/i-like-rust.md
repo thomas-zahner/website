@@ -17,7 +17,7 @@ This also applies to the ecosystem surrounding the language such as the standard
 
 The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory safe language. Violating ownership, type or lifetime constraints would potentially lead to undefined behaviour so that Rust has to be inherently pedantic about enforcing such rules in order to be memory safe. But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety. It runs throughout Rust's narrative.
 
-Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both things. Rust programs can and are formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
+Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming, certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both things. Rust programs can be formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
 
 Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.\*.\*) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. Correct SemVer also means no incompatible API changes with the release of patch (\*.\*.1) and minor (\*.1.\*) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
 
@@ -25,7 +25,7 @@ When you work with functions and types from the standard library, you can feel j
 
 ## An example
 
-Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically the naming was bad and the implementation of this type was inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility and to confuse new developers. Instantiating this type can for example be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
+Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking into this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically, the naming is misleading and the implementation of this type is inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility and to confuse new developers. Instantiating this type can, for example, be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
 
 ```java
 new Date(0, 0, 0) // Sun Dec 31 00:00:00 CET 1899
@@ -46,17 +46,17 @@ LocalDate d = LocalDate.parse("2021-02-31", f);
 System.out.println(d); // 2021-02-28
 ```
 
-In stark contrast to Java, the Rust standard library is meticulously correct and polished. Rust developers learned form the mistakes made in the past. Rust is conservative when it comes to adding new features. Only once they have proven useful in other languages or in popular libraries they are considered to be added.
+In stark contrast to Java, the Rust standard library is meticulously correct and polished. Rust developers learned from the mistakes made in the past. Rust is conservative when it comes to adding new features. Only once they have proven useful in other languages or in popular libraries they are considered to be added.
 
 ## Technical debt
 
 The previous example shows how the concept of technical debt also applies to programming languages.
-In fact, debts in language design weigh much heavier.
-Once a language has commited a mistake, it cannot be undone without breaking backwards compatibility.
+In fact, debt in language design weighs much heavier.
+Once a language has committed a mistake, it cannot be undone without breaking backward compatibility.
 
 Some established languages have evolved significantly over time.
-There have been many additions when new conepts and approaches got popular.
-Some new approaches replaced existing ones, but they couldn't be removed because of the need to maintain backwards compatibility.
+New approaches were introduced to replace existing ones,
+but the old approaches couldn't be removed due to the need to maintain backward compatibility.
 This leads to conventions and best practices.
 Previous best practices become outdated and frowned upon.
 The language accumulates complexity as its technical debt continues to grows.
@@ -113,7 +113,7 @@ So Rust's approach is simple and pragmatic. A fault condition should be either r
 
 ## Error messages
 
-Error messages in Rust are awesome. They're super helpful, concise and correct. As the compiler itself is very strict in general you will encounter compilation errors where you don't know how to resolve the issue and you have to rethink your approach. But the error messages are as helpful as they could possible get. An unspecific or unclear error message is considered a bug by the Rust team, and you should report it if you ever encounter one. Some compilers give vague error messages and some even point to the wrong source files! This for example happens when working with templates in C++. Working with such error messages is a nightmare.
+Error messages in Rust are awesome. They're super helpful, concise and correct. As the compiler itself is very strict in general you will encounter compilation errors where you don't know how to resolve the issue and you have to rethink your approach. But the error messages are as helpful as they could possibly get. An unspecific or unclear error message is considered a bug by the Rust team, and you should report it if you ever encounter one. Some compilers give vague error messages and some even point to the wrong source files! This for example happens when working with templates in C++. Working with such error messages is a nightmare.
 
 Runtime errors in Rust are a rarer phenomenon but they will be just as clear as the error messages by the compiler. Most of the time the concise messages are enough to track down the mistake. Optionally backtraces can be enabled as Rust provides a tiny runtime.
 
@@ -184,10 +184,10 @@ Eventually, you might realise that you will have to rethink your whole approach 
 
 This was the hardest part for me (and still is) when working with Rust. Sometimes the compiler forces you to rethink your approach. You realise that you can't bend the borrow checker to your will, instead you have to work with it. The compiler is your mentor not your enemy to fight.
 
-Personally, I started learning Rust during the Covid pandemic. At the time we had a course on algorithms and data structures at university and I decided to implement the exercises in Rust instead of Java. After reading the first few chapters of the Rust book, I felt confident enough to give it a try. I was able to implement some algorithms and was happy with the results. But I got lost and confused when I tried to implement a binary tree myself. After trail and error, I did some research and came across a chapter in the book I hadn't read yet. Turns out that data structures in Rust can get complicated very quickly. On top of ownership you also need to know about smart pointers, interior mutability, reference counting, reference cycles...
+Personally, I started learning Rust during the Covid pandemic. At the time we had a course on algorithms and data structures at university and I decided to implement the exercises in Rust instead of Java. After reading the first few chapters of the Rust book, I felt confident enough to give it a try. I was able to implement some algorithms and was happy with the results. But I got lost and confused when I tried to implement a binary tree myself. After trial and error, I did some research and came across a chapter in the book I hadn't read yet. Turns out that data structures in Rust can get complicated very quickly. On top of ownership you also need to know about smart pointers, interior mutability, reference counting, reference cycles...
 I was overwhelmed and discouraged. But I realised that data structures were not the best starting point for learning Rust. And that in the real world you would make use of the standard library and crates built by smart people anyway.
 
-After that, I tried to implement simple things with Rust. Over time I almost forgot about the concepts I read about when dealing with binary trees. It turns out that programming "normal" things in Rust is much easier than I though. The only thing you really need to understand is ownership. Understanding lifetimes, interior mutability, etc. is great, but in "normal" code you almost never make use of these concepts.
+After that, I tried to implement simple things with Rust. Over time I almost forgot about the concepts I read about when dealing with binary trees. It turns out that programming "normal" things in Rust is much easier than I thought. The only thing you really need to understand is ownership. Understanding lifetimes, interior mutability, etc. is great, but in "normal" code you almost never make use of these concepts.
 
 ## Conclusion
 
