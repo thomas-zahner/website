@@ -30,7 +30,9 @@ It is run and used as CLI in the terminal.
 ## [Link management tool - LMT](https://gitlab.com/lmt7360522/lmt)
 
 A tool to identify broken URLs.
-With the use of the [Wayback Machine](https://web.archive.org/) LMT can repair broken links by replacing them with links to website snapshots of the past. This project was part of our Bachelor thesis.
+Written in TypeScript using [Deno](https://deno.com).
+With the use of the [Wayback Machine](https://web.archive.org/) LMT can repair broken links by replacing them with links to website snapshots of the past.
+This project was part of our Bachelor thesis.
 
 ## [Rooty](https://gitlab.com/thomas-zahner/rooty)
 
