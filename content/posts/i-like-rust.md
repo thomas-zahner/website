@@ -82,7 +82,8 @@ IBM showed this in [a study](https://www.researchgate.net/publication/255965523_
 
 ![IBM System Science Institute. A graph depicting the relative cost of fixing defects. "Design" has a cost of 1, "implementation" a cost of 6.5, "testing" a cost of 15 and "maintenance" a cost of 100.](/ibm-relative-cost-of-fixing-defects.png)
 
-Rust is as statically typed and type safe as you could possibly get with a "real" programming language. Static types don't automatically lead to type safety. For example in Java you can do the following to trick the compiler and cause a runtime error:
+Static types don't automatically lead to type safety.
+For example in Java you can do the following to trick the compiler and cause a runtime error:
 
 ```java
 int x = 42;
@@ -108,13 +109,12 @@ Most programmers today agree that using the GOTO statement in high-level languag
 
 Calling any function can throw an exception and the programmer may not realise that this can happen, unless it is documented and the programmer cares to read the documentation. You can't ever know for sure when you should surround a function call with error handling code, unless you establish some sort of convention or documentation. Some languages have "checked" exceptions which force the programmer to either handle the exception or propagate it further, but by requiring annotations. This way you can't forget about handling an exception. However, where there are "checked" exceptions there still are "unchecked" exceptions which can be forgotten about.
 
-In a sense, Rust only knows "checked" exceptions but with a very different syntax.
+In a sense, Rust only knows "checked" exceptions, but with a very different syntax.
 Instead of throwing an exception we simply return a `Result<T, E>`.
-The result's value can be either `Ok(T)` ("`Ok` with a value of `T`) or `Err(E)`.
+The result's value can be either `Ok(T)` (`Ok` with a value of `T`) or `Err(E)`.
 You will be forced to check if the result is `Ok` or `Err` if you want to access the inner values `T` or `E`.
 Now there are certain scenarios where your program reaches a state where you can't or don't want to recover, when encountering a problem.
 In this case it's possible to `panic`. When a program panics it will crash by unwinding its call-stack, optionally printing a stack trace.
-You won't be able to catch panics.
 So Rust's approach is simple and pragmatic. A fault condition should be either recoverable or not.
 
 ## Error messages
@@ -142,14 +142,20 @@ thread 'main' has overflowed its stack
 fatal runtime error: stack overflow
 ```
 
-With Rust you don't have to be a coding wizard to understand error messages. In my attempt to create a stack overflow in Rust, the compiler also warned me about the fact that my `function cannot return without recursing`.
+With Rust you don't have to be a coding wizard to understand error messages.
+In my attempt to create a stack overflow in Rust, the compiler also warned me about the fact that my `function cannot return without recursing`.
 
 ## Dependencies
 
-When writing software these days, you will probably sooner or later depend on external libraries. This is why dependency management shouldn't be a pain. Many languages evolved before streamlined dependency management was a thing. I think NPM, the package manager for NodeJS was the first good dependency management system for a programming language. I became very popular and might be the main reason why NodeJS itself got so popular. One thing I dislike about the NPM ecosystem is that dependency graphs tend to be huge. This is not a problem of NPM itself. To some extent it might be a problem of NodeJS or JavaScript. Simple things like cloning objects or comparing objects for equality are not possible out of the box. When people in an ecosystem tend to add dependencies to their libraries without much thought it becomes the norm. Rustaceans seem to be more conservative about adding dependencies to their projects. Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements. With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
+When writing software these days, you will probably sooner or later depend on external libraries.
+This is why dependency management shouldn't be a pain.
+Many languages evolved before streamlined dependency management was a thing.
+NPM, the package manager for NodeJS, was the first dependency management system I used that I liked.
+I became very popular and might be the reason why NodeJS itself got so popular.
+Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements.
+With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
 
 Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^11] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
-
 Cargo makes managing dependencies and building your project as easy as it gets.
 
 ## Rust is practical
@@ -161,7 +167,6 @@ Don't know what to return from a function yet? Simply return `todo`.
 Even though there are debuggers, printing variables and variable names is something developers do way too much.
 Just use [`dbg`](https://doc.rust-lang.org/std/macro.dbg.html) to print whole expressions with their value, file name and line numbers.
 To clone or compare objects you don't have to write boilerplate code, you don't need any libraries and you don't need much experience.
-
 You just mark a structure with `Clone` or `Eq`, that's one simple line of code.
 You like linters? Rust comes with [Clippy <img src="/clippy.webp" height="25" style="border: none;">](https://doc.rust-lang.org/stable/clippy/usage.html),
 the most strict and annoying linter.
@@ -183,7 +188,6 @@ If you have issues with compilation times there are [many ways to further improv
 ## Hard to learn
 
 The Rust compiler is strict, that's no secret. As a beginner it can be difficult to get basic programs to compile. Understanding the concepts of the language such as ownership is therefore essential. Fortunately, the official [Rust book](https://doc.rust-lang.org/stable/book/) is perfect for learning all these concepts, and the Rust compiler will also help you along the way.
-
 You will encounter compilation errors probably more often than in any other language.
 There will be cases where you have no idea how to fix the problem at first.
 Eventually, you might realise that you will have to rethink your whole approach to the problem.
