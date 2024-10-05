@@ -1,6 +1,6 @@
 +++
 title = "I like Rust"
-date = 2024-10-02
+date = 2024-10-05
 
 [taxonomies]
 tags = ["rust"]
