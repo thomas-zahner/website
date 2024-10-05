@@ -15,17 +15,21 @@ If you were to ask me what my favourite programming language is, my answer would
 First of all, Rust as a language deeply cares about correctness and doing things the right way.
 This also applies to the ecosystem surrounding the language such as the standard library and the crates on crates.io.
 
-The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory safe language. Violating ownership, type or lifetime constraints would potentially lead to undefined behaviour so that Rust has to be inherently pedantic about enforcing such rules in order to be memory safe. But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety. It runs throughout Rust's narrative.
+The roots for this sense of correctness might lie in safety guarantees that Rust provides as a memory safe language.
+Violations of ownership, type or lifetime constraints would potentially lead to undefined behaviour,
+so Rust has to be inherently pedantic about enforcing such rules in order to be memory safe.
+But when you work with the Rust ecosystem, you realise that correctness doesn't end with memory safety.
+It runs throughout Rust's narrative.
+When you work with functions and types from the standard library, you can feel just how much thought and polish has gone into the design.
+This vastly contrasts with most other languages I've used such as JavaScript or Java.
 
 Rust inherited many ideas from Haskell and declarative languages in general. Declarative languages come from academia and mathematics. They are what you get when you combine mathematics and logic with computer science and programming languages. For example, they allow to prove the correctness of a program without running it. In functional programming, certain things, like modifying lists, can be done much more elegantly with less code and no bugs. The disadvantage of functional programming is that interaction with the real world, such as talking to hardware and reading user input, is cumbersome. Rust has somehow managed to be great at both things. Rust programs can be formally verified in many ways. The compiler verifies types, ownership, lifetimes and more. You can additionally verify that your program [never panics](https://github.com/dtolnay/no-panic) or that it [doesn't encounter undefined behaviour](https://github.com/rust-lang/miri).
 
-Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.\*.\*) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. Correct SemVer also means no incompatible API changes with the release of patch (\*.\*.1) and minor (\*.1.\*) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
-
-When you work with functions and types from the standard library, you can feel just how much thought and polish has gone into the design. This vastly contrasts with most other languages I've used such as JavaScript or Java.
+Rustaceans seem to obsess over seemingly simple things like semantic versioning (SemVer). Developers of Rust libraries won't release the first major version (1.\*.\*) unless they are sure that their API is mature and stable enough. This process normally takes years and has also kind of become a meme. After the first major release, correct SemVer also means no incompatible API changes with the release of patch (\*.\*.1) and minor (\*.1.\*) versions. Complying with those seemingly simple rules turns out to be pretty hard in practice. This is why [linters are created](https://github.com/obi1kenobi/cargo-semver-checks) to prevent authors from making mistakes.
 
 ## An example
 
-Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking into this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically, the naming is misleading and the implementation of this type is inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility and to confuse new developers. Instantiating this type can, for example, be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
+Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking into this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically, the naming is misleading and the implementation of this type is inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility, and it continues to haunt developers to this day. Instantiating this type can, for example, be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
 
 ```java
 new Date(0, 0, 0) // Sun Dec 31 00:00:00 CET 1899
@@ -88,17 +92,19 @@ return (String) forgetCompileTypeInfo; // oh no, a runtime error
 
 In Rust that's not possible. Casts must be valid at the type level, or else they will be prevented statically.[^3] Not checking for type constraints at compile time, or worse, doing conversions at runtime to somehow satisfy type constraints, as JavaScript does[^4], leads to more bugs and costs.
 
-## No billion dollar bug
+## No billion-dollar mistake
 
 Many languages have incorporated the concept of lack of value into the language, with special keywords like `null`, `nil` or similar. Any time you pass a value by reference, which is the default in many languages (Java, C#, Python, ...), the value can be absent. This concept was introduced by Tony Hoare into ALGOL and has become the norm for most programming languages. However, introducing such a special value that can be present everywhere in the system by default, means you have to handle the special value everywhere with additional code, otherwise you might create bugs. Conventions and best practices started to appear, about when to use this special value. Over time people started to agree that this special value shouldn't be everywhere by default. The inventor himself apologised for introducing the concept in the first place.
 
 > But I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.[^5]
 
-Rust is one of the languages which does not know a special null value. You must opt in for the possible absence of a value. This is done with the `Option<T>` type.
+Rust is one of the languages which does not know a special null value.
+You must opt in for the possible absence of a value.
+This is done with the [`Option<T>` type](https://doc.rust-lang.org/std/option/).
 
 ## Error handling
 
-Most programmers today agree that using the GOTO statement in high-level languages is bad practice. It leads code that is more difficult to read and maintain. I think exceptions like they are known in many modern languages are just fancy GOTO statements. When an exception is hit, the normal execution flow is stopped and the instruction pointer jumps into some error handling section.
+Most programmers today agree that using the GOTO statement in high-level languages is bad practice.[^6] It leads code that is more difficult to read and maintain. I think exceptions like they are known in many modern languages are just fancy GOTO statements. When an exception is hit, the normal execution flow is stopped and the instruction pointer jumps into some error handling section.
 
 Calling any function can throw an exception and the programmer may not realise that this can happen, unless it is documented and the programmer cares to read the documentation. You can't ever know for sure when you should surround a function call with error handling code, unless you establish some sort of convention or documentation. Some languages have "checked" exceptions which force the programmer to either handle the exception or propagate it further, but by requiring annotations. This way you can't forget about handling an exception. However, where there are "checked" exceptions there still are "unchecked" exceptions which can be forgotten about.
 
@@ -117,7 +123,7 @@ Error messages in Rust are awesome. They're super helpful, concise and correct. 
 
 Runtime errors in Rust are a rarer phenomenon but they will be just as clear as the error messages by the compiler. Most of the time the concise messages are enough to track down the mistake. Optionally backtraces can be enabled as Rust provides a tiny runtime.
 
-If you create a stack overflow with C++ the error message could look like this[^6]:
+If you create a stack overflow with C++ the error message could look like this[^7]:
 
 ```
 HelloWorld.exe (process 15916) exited with code -1073741571.
@@ -142,7 +148,7 @@ With Rust you don't have to be a coding wizard to understand error messages. In 
 
 When writing software these days, you will probably sooner or later depend on external libraries. This is why dependency management shouldn't be a pain. Many languages evolved before streamlined dependency management was a thing. I think NPM, the package manager for NodeJS was the first good dependency management system for a programming language. I became very popular and might be the main reason why NodeJS itself got so popular. One thing I dislike about the NPM ecosystem is that dependency graphs tend to be huge. This is not a problem of NPM itself. To some extent it might be a problem of NodeJS or JavaScript. Simple things like cloning objects or comparing objects for equality are not possible out of the box. When people in an ecosystem tend to add dependencies to their libraries without much thought it becomes the norm. Rustaceans seem to be more conservative about adding dependencies to their projects. Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements. With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
 
-Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^7] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
+Most languages still don't have an official or standardised way of managing dependencies. Java has Gradle and Maven, both of which seem overly complicated to me. C and C++ have a dozen different unofficial package managers. As of 2024, the most popular registries vcpkg and Conan contain less than 3'000 packages. Cargo has 160'000 packages and NPM more than a million. Python was ahead of its time when introducing pyinstall, which was later renamed to pip, in 2008.[^8] However, pip hasn't evolved much since that time. Packages are installed globally by default. You will need to make use of an additional package to avoid breaking the dependencies of your system and to avoid conflicts.
 
 Cargo makes managing dependencies and building your project as easy as it gets.
 
@@ -213,6 +219,8 @@ it could make our lives more fun again.
 
 [^5]: [Null references - The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/)
 
-[^6]: [LearnCpp.com - The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/)
+[^6]: [Edgar Dijkstra - Go To Statement Considered Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)
 
-[^7]: [Python's packaging history](https://www.pypa.io/en/latest/history/)
+[^7]: [LearnCpp.com - The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/)
+
+[^8]: [Python's packaging history](https://www.pypa.io/en/latest/history/)
