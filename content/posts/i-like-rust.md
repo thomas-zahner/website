@@ -203,7 +203,6 @@ After that, I tried to implement simple things with Rust. Over time I almost for
 
 In my opinion, Rust is the pinnacle of modern compiler and language development.
 The deliberate design choices in the language show how the developers have learned from the problems in other languages.
-The introduction of new concepts such as the borrow checker make the Rust compiler probably the most complex compiler out there.
 In Rust it might be harder to get a program to compile.
 You need to understand some basic concepts that might not exist in other languages,
 but the Rust book provides you with all that knowledge.
