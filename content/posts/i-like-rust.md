@@ -70,7 +70,7 @@ where only a subset of the language should be used.
 Although it is natural for a language to evolve to some extent, too much change can be unhealthy.
 My feeling about Rust is that its foundations are so robust that it won't change as radically as other languages have over time.
 Rust guarantees that once a feature is released, contributors will continue to support that feature for all future releases
-and breaking changes are only introduced in new editions. [^3]
+and breaking changes are only introduced in new editions.[^3]
 
 ## Types
 
@@ -220,7 +220,7 @@ it could make our lives more fun again.
 
 [^2]: [The Java Date class](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
 
-[^3]: [The Rust book - What are editions?](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
+[^3]: [The Rust book - What are editions?](https://doc.rust-lang.org/edition-guide/editions/index.html)
 
 [^4]: Python introduced [type hints](https://docs.python.org/3/library/typing.html) in version 3.5 to integrate with third-party tools
 
