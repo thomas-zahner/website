@@ -153,7 +153,7 @@ When writing software these days, you will probably sooner or later depend on ex
 This is why dependency management shouldn't be a pain.
 Many languages evolved before streamlined dependency management was a thing.
 NPM, the package manager for NodeJS, was the first dependency management system I used that I liked.
-I became very popular and might be the reason why NodeJS itself got so popular.
+It became very popular and might be the reason why NodeJS itself got so popular.
 Rust's build system and package manager, Cargo, is very similar to NPM with a few improvements.
 With NPM, for example, I regularly forget to install or update the dependencies with `npm install`, whereas Cargo does this automatically for you.
 
