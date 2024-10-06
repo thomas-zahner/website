@@ -214,6 +214,8 @@ Rust forces you to think hard up front, but rewards you in the future with far f
 This makes software development more sustainable, and since most of us prefer to write new code over fixing bugs,
 it could make our lives more fun again.
 
+<br><br><br><br>
+
 [^1]: [Issues with the existing Date/Time APIs](https://www.baeldung.com/java-8-date-time-intro#issues)
 
 [^2]: [The Java Date class](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
