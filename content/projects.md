@@ -3,6 +3,11 @@ title = "Projects"
 path = "projects"
 +++
 
+## [Commitoria](https://github.com/thomas-zahner/commitoria)
+
+A tool for aggregating and visualising contribution activity from multiple sources.
+This is my latest project and it's still in a very early stage.
+
 ## [long-running-task](https://github.com/thomas-zahner/long-running-task)
 
 A simple Rust library to handle [long-running tasks](https://restfulapi.net/rest-api-design-for-long-running-tasks/)
