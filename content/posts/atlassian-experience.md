@@ -8,7 +8,7 @@ tags = ["web", "rant"]
 +++
 
 For the last four years I've been working in a team where we developed apps for Atlassian products.
-Maybe you haven't heart of Atlassian but you probably know their products Jira and Confluence.
+Maybe you haven't heard of Atlassian but you probably know their products Jira and Confluence.
 Both can be extended with apps from the [Atlassian Marketplace](https://marketplace.atlassian.com).
 In this post, I'll share how both user and developer experience felt to me and our team.
 And to be honest, it wasn't very great.
