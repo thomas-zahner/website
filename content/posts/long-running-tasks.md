@@ -12,9 +12,10 @@ Complete is done via `Handle`. This method is also called by the task's logic.
 The beauty of Rust's ownership model makes it possible to ensure that the `progress` function
 The nice thing is that this makes it possible for library users to `progress` a task after calling `complete`. It is prevented by the borrow checker.
 
-In the `progress` function this is ex None => unreachable
-
-
+In the `progress` function this is expressed with `None => unreachable`
+The compiler can't know that this code doesn't panic.
+This idea can be found in many places in Rust.
+For example Rust `unsafe` code that is hidden away from library users and (ideally) isn't unsafe because of the abtractions.
 
 ## Outlook
 
