@@ -32,4 +32,5 @@ socials = [
   { name = "GitHub", url = "https://github.com/thomas-zahner", icon = "github" },
   { name = "GitLab", url = "https://gitlab.com/thomas-zahner", icon = "gitlab" },
   { name = "Mastodon", url = "https://mastodon.social/@thomas_zahner", icon = "mastodon" },
+  { name = "Atom", url = "/atom.xml", icon = "rss" },
 ]
