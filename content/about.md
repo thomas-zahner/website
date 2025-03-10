@@ -10,3 +10,6 @@ When I'm not sitting in front of the computer, you can find me on the climbing w
 
 I'm on [Mastodon](https://mastodon.social/@thomas_zahner), [GitHub](https://github.com/thomas-zahner) and [GitLab](https://gitlab.com/thomas-zahner).
 You can also contact me [by email](mailto:thomas.zahner@protonmail.ch).
+
+This website was built using [Zola](https://www.getzola.org) and the [Apollo theme](https://github.com/not-matthias/apollo).
+You can find the source code [here](https://github.com/thomas-zahner/website).
