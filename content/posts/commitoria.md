@@ -3,7 +3,7 @@ title = "Announcing Commitoria"
 date = 2025-06-29
 
 [taxonomies]
-tags = ["politics", "foss", "web"]
+tags = ["foss", "web", "rust"]
 +++
 
 # Background
