@@ -18,11 +18,11 @@ But this is not the case.
 The only tool required to host a Git repository is Git itself[^2]  and some infrastructure to run it on.
 The Linux kernel demonstrates how Git, alongside mailing lists, is a perfectly feasible and professional approach for handling large-scale projects.[^3]
 
-While GitHub and other platforms have become mainstream, they are by no means perfect or the only option.
+Even though GitHub and other platforms have become mainstream, they are by no means perfect or the only option.
 In fact, there are reasons to avoid such platforms.
 
 These platforms undermine the decentralised nature of Git.
-While Git itself prevents vendor lock-in to some extent, everything platform-related might be difficult or impossible to migrate.
+Although Git itself prevents vendor lock-in to some extent, everything platform-related might be difficult or impossible to migrate.
 Many hosting platforms are proprietary, which is quite ironic given that they often serve communities built around FOSS collaboration and transparency.
 Recently, GitHub blocked Organic Maps for some strange, possibly political reasons.[^4]
 GitHub is a US-based company[^5], which makes it subject to the Patriot Act and, more recently, unstable and questionable politics.
