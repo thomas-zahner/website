@@ -6,13 +6,15 @@ date = 2025-06-29
 tags = ["foss", "web", "rust"]
 +++
 
-# Background
-
-> Git is a distributed version control system that tracks versions of files. [^1]
-
+Git is a distributed version control system that tracks versions of files.[^1]
 This is probably no news to you if you're a developer.
 In practice, Git is most often used in combination with a hosting platform, such as GitHub or GitLab.
 While these platforms often simplify a developer's life and increase visibility they can also be limiting in ways.
+
+<!-- more -->
+
+# Background
+
 There are devs out there that strongly associate Git with GitHub to a point that they think GitHub (or insert any other platform here) is the only way to host Git repositories.
 But this is not the case.
 The only tool required to host a Git repository is Git itself[^2]  and some infrastructure to run it on.
