@@ -39,6 +39,11 @@ Written in TypeScript using [Deno](https://deno.com).
 With the use of the [Wayback Machine](https://web.archive.org/) LMT can repair broken links by replacing them with links to website snapshots of the past.
 This project was part of our Bachelor thesis.
 
+## [Rusty playground](https://gitlab.com/thomas-zahner/rusty-playground)
+
+A collection of tiny projects and experiments to learn more about Rust.
+It's (at least partially) how I got started getting into Rust.
+
 ## [Rooty](https://gitlab.com/thomas-zahner/rooty)
 
 A browser plugin to add a beautiful, simple and effective home page to your browser.
