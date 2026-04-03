@@ -15,10 +15,9 @@ taxonomies = [
   { name = "tags" },
 ]
 
-[markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
+[markdown.highlighting]
+error_on_missing_language = true
+theme = "catppuccin-macchiato"
 
 [extra]
 menu = [
