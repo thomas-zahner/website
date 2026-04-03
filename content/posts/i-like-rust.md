@@ -32,7 +32,7 @@ Rustaceans seem to obsess over seemingly simple things like semantic versioning 
 Recently, I had to deal with dates and date-times in Java. I wanted to validate a string representing a date or date with time and have a type to encapsulate the information. The first type you encounter when looking into this will be `java.util.Date`. You will notice quickly that most methods on this type are marked as deprecated. When reading about it you learn how it doesn't represent a date but an instance in time measured in milliseconds. Basically, the naming is misleading and the implementation of this type is inconsistent, poorly designed and thread-unsafe.[^1] This date type was introduced in version 1.0 (1996) and most methods were deprecated in 1.1 (2002).[^2] So today this type only exists for backwards compatibility, and it continues to haunt developers to this day. Instantiating this type can, for example, be done by providing year, month and day. But remember that the year starts at 1900, the first month is 0 and the first day is 1. Month and day overflows also seem to be a handy feature.
 
 ```java
-new Date(0, 0, 0) // Sun Dec 31 00:00:00 CET 1899
+new Date(0, 0, 0); // Sun Dec 31 00:00:00 CET 1899
 new Date(0, 33, 0); // Tue Sep 30 00:00:00 CET 1902 
 ```
 
